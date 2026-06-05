@@ -15,6 +15,7 @@ public class UltimateTeam {
             System.out.println("1 - Adicionar jogador");
             System.out.println("2 - Ver time");
             System.out.println("3 - Calcular overall");
+            System.out.println("4 - Melhor jogador");
             System.out.println("0 - Sair");
 
             int opcao = sc.nextInt();
@@ -75,6 +76,36 @@ public class UltimateTeam {
                 }
 
             }
+
+            else if (opcao == 4) {
+
+                if (time.size() > 0) {
+
+                    Jogador melhor = time.get(0);
+
+                    for (Jogador j : time) {
+
+                        if (j.overall > melhor.overall) {
+                            melhor = j;
+                        }
+
+                    }
+
+        System.out.println("\n⭐ MELHOR JOGADOR");
+
+        System.out.println(
+            melhor.nome + " | " +
+            melhor.overall + " | " +
+            melhor.posicao
+        );
+
+    } else {
+
+        System.out.println("Time vazio!");
+
+    }
+
+}
 
             else if (opcao == 0) {
                 break;

@@ -5,8 +5,11 @@ public class Jogador {
     String posicao;
 
     public Jogador(String nome, int overall, String posicao) {
+
         this.nome = nome;
         this.overall = overall;
         this.posicao = posicao;
+
     }
+
 }
