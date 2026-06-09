@@ -25,6 +25,8 @@ public class UltimateTeam {
             System.out.println("3 - Calcular overall");
             System.out.println("4 - Melhor jogador");
             System.out.println("5 - Definir capitão");
+            System.out.println("6 - Estatísticas do elenco");
+            System.out.println("7 - Remover jogador");
             System.out.println("0 - Sair");
 
             int opcao = sc.nextInt();
@@ -182,6 +184,125 @@ public class UltimateTeam {
             }
 
         }
+
+        else if (opcao == 6) {
+
+    if (time.size() == 0) {
+
+        System.out.println("Time vazio!");
+
+    } else {
+
+        Jogador melhor = time.get(0);
+        Jogador pior = time.get(0);
+
+        int soma = 0;
+
+        for (Jogador j : time) {
+
+            soma += j.overall;
+
+            if (j.overall > melhor.overall) {
+                melhor = j;
+            }
+
+            if (j.overall < pior.overall) {
+                pior = j;
+            }
+
+        }
+
+        int media = soma / time.size();
+
+        System.out.println("\n=== ESTATÍSTICAS DO ELENCO ===");
+
+        System.out.println("Jogadores: " + time.size());
+
+        System.out.println("Overall Médio: " + media);
+
+        System.out.println(
+            "Melhor Jogador: " +
+            melhor.nome +
+            " (" + melhor.overall + ")"
+        );
+
+        System.out.println(
+            "Pior Jogador: " +
+            pior.nome +
+            " (" + pior.overall + ")"
+        );
+
+        if (capitao != null) {
+
+            System.out.println(
+                "Capitão: " +
+                capitao.nome
+            );
+
+        }
+
+        else if (opcao == 7) {
+
+    if (time.size() == 0) {
+
+        System.out.println("Time vazio!");
+
+    } else {
+
+        System.out.println("\n=== REMOVER JOGADOR ===");
+
+        for (int i = 0; i < time.size(); i++) {
+
+            Jogador j = time.get(i);
+
+            System.out.println(
+                (i + 1) + " - " +
+                j.nome + " | " +
+                j.overall + " | " +
+                j.posicao
+            );
+
+        }
+
+        System.out.print("Escolha o número do jogador: ");
+        int escolha = sc.nextInt();
+        sc.nextLine();
+
+        if (escolha >= 1 && escolha <= time.size()) {
+
+            Jogador removido = time.remove(escolha - 1);
+
+            if (capitao == removido) {
+
+                capitao = null;
+
+                System.out.println(
+                    removido.nome +
+                    " foi removido e deixou de ser capitão."
+                );
+
+            } else {
+
+                System.out.println(
+                    removido.nome +
+                    " removido do elenco."
+                );
+
+            }
+
+        } else {
+
+            System.out.println("Jogador inválido!");
+
+        }
+
+    }
+
+}
+
+    }
+
+}
 
             else if (opcao == 0) {
 
